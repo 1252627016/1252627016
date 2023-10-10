@@ -1,7 +1,12 @@
 #!name=签到阿里云盘
 #!desc=若提示获取cookie成功则可以使用签到
 [Script]
-阿里云盘签到 = type=cron,cronexp="0 10 0 * * ?",wake-system=1,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/ali/aliYunPanCheckIn.js
+阿里云盘签到 = type=cron,cronexp="1 0 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/ali/aliYunPanCheckIn.js
+高德打车签到 = type=cron, cronexp="1 0 * * *", script-path=   https://raw.githubusercontent.com/jivei/Surge/main/js/ampDache.js, timeout=60, wake-system=1
+
+
+高德打车签到获取Cookie = type=http-response, pattern=^https:\/\/(m5(|-zb)|dache)\.amap\.com\/(ws\/yuece\/(act|openapi\/activity\/current)\/query|common\/(alipaymini|wxmini)\?_ENCRYPT=), requires-body=true, max-size=3145728, script-path= https://raw.githubusercontent.com/jivei/Surge/main/js/ampDache.js, timeout=60, script-update-interval=0
+B站每日任务 = type=cron,cronexp="1 0 * * *",script-path=https://raw.githubusercontent.com/jivei/Surge/main/js/BiliBili.js
 
 [MITM]
-hostname = %APPEND% auth.alipan.com
+hostname = %APPEND% auth.alipan.com, *.amap.com,app.bilibili.com, m.bilibili.com
